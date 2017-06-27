@@ -24,8 +24,8 @@ To have an Excel VBA library that works with data sets you recieve in excel, so 
 * sortList
 
 ### Comment Symbols
-* Section Header: //
-* Funtion Header: @
+* Section Header: '//
+* Funtion Header: '@
 * Function Comments (Outer): '-
 * Function Comments (Inner): '#
 * Function dependent on internal function list: '!
