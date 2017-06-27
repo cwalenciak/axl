@@ -4,6 +4,10 @@ Excel VBA library/class for working with arrays.
 ## Philosophy
 To have an Excel VBA library that works with data sets you recieve in excel, so that you can perform analysis or build an Excel app to process the data.
 
+## Required References
+* Microsoft Scripting Runtime
+* Microsoft Forms 2.0 Object Library
+
 ## Conventions
 
 ### Misc
@@ -12,16 +16,14 @@ To have an Excel VBA library that works with data sets you recieve in excel, so 
 * **"col"** or **"cols"** for columns
 
 ### Variables
-* **headers**: boolean to pass to a function to mark whether or not a dataArray has headers (defualt is true). 
-* **caseMatters**: boolean to pass to a function to mark whether or not you care about capital letters (default is false).
-
-### Data Variables
-* dataArray - Main array that is past to an axl function that works with arrays.
-* dataList - Main list that is past to an axl function that works with list.
-* sortArray
-* sortList
-* searchArray
-* sortList
+* **headers**- boolean to pass to a function to mark whether or not a dataArray has headers (defualt is true). 
+* **caseMatters**- boolean to pass to a function to mark whether or not you care about capital letters (default is false).
+* **dataArray** - Main array that is past to an axl function that works with arrays.
+* **dataList** - Main list that is past to an axl function that works with list.
+* **sortArray**
+* **sortList**
+* **searchArray**
+* **sortList**
 
 ### Comment Symbols
 * Section Header: '//
