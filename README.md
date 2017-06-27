@@ -28,8 +28,8 @@ Excel VBA library/class for working with arrays.
 * Function dependent on internal function list: '!
 
 ### Warnings/Error:
-* <!DATA ERROR!>
-* <!NO DATA!>
+* <\!DATA ERROR!\>
+* <\!NO DATA!\>
 * <!EMPTY ARRAY!>
 * <!NO POSITION!>
 * <!NULL!>
