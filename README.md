@@ -4,18 +4,18 @@ Excel VBA library/class for working with arrays.
 ## Conventions:
 
 ### Misc
-* Array suffix is used for a 2D array with a starting index of 1. &nbsp;ex. dataArray(1 to 5, 1 to 3)
-* List suffix is used for a 1D array with a starting index of 0.  &nbsp;ex. dataList(0 to 5)
+* **Array** suffix is used for a 2D array with a starting index of 1. &nbsp;ex. dataArray(1 to 5, 1 to 3)
+* **List** suffix is used for a 1D array with a starting index of 0.  &nbsp;ex. dataList(0 to 5)
 * Max line Width: 100
-* "col" or "cols" for columns
+* **"col"** or **"cols"** for columns
 
 ### Variables
-* **headers**: true if dataArray has headers (defualt is true). 
+* **headers**: boolean to dataArray has headers (defualt is true). 
 * **caseMatters**: set to false if you don't care about capital letters (default is false).
 
-### Argument Variables
-* dataArray
-* dataList
+### Data Variables
+* dataArray - Main array that is past to an axl function that works with arrays.
+* dataList - Main list that is past to an axl function that works with list.
 * lists
 * sortArray
 * sortList
