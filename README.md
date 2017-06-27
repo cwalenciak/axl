@@ -1,11 +1,14 @@
 # axl
 Excel VBA library/class for working with arrays.
 
-## Conventions:
+## Philosophy
+To have an Excel VBA library that works with data sets you recieve in excel, so that you can perform analysis or build an Excel app to process the data.
+
+## Conventions
 
 ### Misc
-* **Array** suffix is used for a 2D array with a starting index of 1. &nbsp;ex. dataArray(1 to 5, 1 to 3)
-* **List** suffix is used for a 1D array with a starting index of 0.  &nbsp;ex. dataList(0 to 5)
+* **Array** suffix is used for a 2D array with a starting index of 1. &nbsp;ex. `` dataArray(1 to 5, 1 to 3) ``
+* **List** suffix is used for a 1D array with a starting index of 0.  &nbsp;ex. `` dataList(0 to 5) ``
 * **"col"** or **"cols"** for columns
 
 ### Variables
@@ -30,6 +33,6 @@ Excel VBA library/class for working with arrays.
 ### Warnings/Error:
 * <\!DATA ERROR!\>
 * <\!NO DATA!\>
-* <!EMPTY ARRAY!>
-* <!NO POSITION!>
-* <!NULL!>
+* <\!EMPTY ARRAY!\>
+* <\!NO POSITION!\>
+* <\!NULL!\>
