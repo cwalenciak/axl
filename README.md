@@ -7,11 +7,11 @@ Excel VBA library/class for working with arrays.
 * Max line Width: 100
 * "col" or "cols" for columns
 
-###**Variables**
+### **Variables**
 * **headers**: true if dataArray has headers (defualt is true). 
 * **caseMatters**: set to false if you don't care about capital letters (default is false).
 
-###**Argument Variables**
+### **Argument Variables**
 * dataArray
 * dataList
 * lists
@@ -20,7 +20,7 @@ Excel VBA library/class for working with arrays.
 * searchArray
 * sortList
 
-###**Comment Symbols**
+### **Comment Symbols**
 -Section Header: //
 -Funtion Header: @
 -Function Comments (Outer): '-
