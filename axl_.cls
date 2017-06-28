@@ -3075,39 +3075,31 @@ End Function
 '!headerIndex(),reshapeArray(),matchGetBool(),filterData()
 Function missingCategories(ByVal dataArray, _
                            dataCol, _
-                           categoryArr, _
-                           categoryDataCol, _
-                           Optional catArrHeaders As Boolean = False, _
+                           categoryList, _
                            Optional headers As Boolean = True, _
                            Optional caseMatters As Boolean = False)
    
     dataCol = headerIndex(dataCol, dataArray)
-    categoryDataCol = headerIndex(categoryDataCol, categoryArr)
-
+    
     '#Match Category Array
-    categoryArr = reshapeArray(categoryArr, nrow(categoryArr), ncol(categoryArr) + 1)
-
-    categoryArr = matchGetBool(categoryArr, 1, ncol(categoryArr), dataArray, dataCol, headers, _
-                               catArrHeaders, caseMatters)
+    Dim catArr As Variant
+    catArr = bindLists(Array(categoryList))
+    catArr = sortArray(catArr, Array(1), True, False, caseMatters)
+    catArr = reshapeArray(catArr, nrow(catArr), ncol(catArr) + 1)
+    catArr = matchDataArr(catArr, 1, ncol(catArr), dataArray, dataCol, , headers, True, False, _
+                          caseMatters)
     
     '#Filter Out True
-    categoryArr = filterData(categoryArr, False, ncol(categoryArr), EqualTo, catArrHeaders)
+    catArr = filterData(catArr, False, 2, EqualTo, False)
     
-    '#Create New Array
-    ReDim finalArr(1 To nrow(dataArray) + nrow(categoryArr), 1 To ncol(dataArray))
-    
-    '#Transfer Data Array
-    Dim i As Long
-    Dim j As Long
-    For i = LBound(dataArray) To UBound(dataArray)
-        For j = LBound(dataArray, 2) To UBound(dataArray, 2)
-            finalArr(i, j) = dataArray(i, j)
-        Next j
-    Next i
+    '#Create New Array (account for added category rows)
+    Dim finalArr As Variant
+    finalArr = reshapeArray(dataArray, nrow(dataArray) + nrow(catArr), ncol(dataArray))
 
     '#Transfer Category Array
-    For i = LBound(categoryArr) To UBound(categoryArr)
-        finalArr(i + nrow(dataArray), dataCol) = categoryArr(i, categoryDataCol)
+    Dim i As Long
+    For i = LBound(catArr) To UBound(catArr)
+        finalArr(i + nrow(dataArray), dataCol) = catArr(i, 1)
     Next i
 
     missingCategories = sortArray(finalArr, Array(dataCol), , headers, caseMatters)
