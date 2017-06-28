@@ -2054,7 +2054,7 @@ Private Function lists(headerList, sourceArray)
         End If
     Next i
     
-    List = tempIndexList
+    lists = tempIndexList
 
 End Function
 
@@ -2482,6 +2482,21 @@ Function binarySearch(ByVal itemToMatch, _
                       
     searchCol = headerIndex(searchCol, searchArray)
     
+    binarySearch = actualbinarySearch(itemToMatch, searchArray, searchCol, searchHeaders, _
+                                      caseMatters)
+    
+End Function
+
+'************************************************
+'@binarySearch
+'************************************************
+'!compareData()
+Private Function actualbinarySearch(ByVal itemToMatch, _
+                                    ByVal searchArray, _
+                                    ByVal searchCol, _
+                                    Optional searchHeaders As Boolean = False, _
+                                    Optional caseMatters As Boolean = False)
+                                    
     '#Set foundPosition to a false match
     Dim foundPosition As Variant
     foundPosition = "<!NO POSITION!>"
@@ -2518,8 +2533,8 @@ Function binarySearch(ByVal itemToMatch, _
     Loop
 
     '#Return
-    binarySearch = foundPosition
-
+    actualbinarySearch = foundPosition
+                                                    
 End Function
 
 
