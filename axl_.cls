@@ -96,7 +96,7 @@ End Sub
 
 
 '==================================================================================================
-'//BUILD ARRAYS & LIST
+'//BUILD ARRAYS
 '==================================================================================================
 
 
@@ -123,26 +123,6 @@ Function arrangeArray(startNumber, _
 
     arrangeArray = tempArray
     
-End Function
-
-
-'************************************************
-'@arrangeList
-'************************************************
-Function arrangeList(startNumber, _
-                     numberCount, _
-                     Optional step = 1, _
-                     Optional ascending As Boolean = True)
-    
-    ReDim tempArray(0 To numberCount - 1)
-
-    Dim i As Long
-    For i = LBound(tempArray) To UBound(tempArray)
-        tempArray(i) = startNumber + (i * step)
-    Next i
-    
-    arrangeList = tempArray
-
 End Function
 
 
@@ -179,46 +159,6 @@ Function bindLists(lists)
     
     bindLists = listArray
     
-End Function
-
-
-'************************************************
-'@colToList
-'************************************************
-Function colToList(dataArray, _
-                   sourceCol, _
-                   Optional headers = True)
-
-    sourceCol = headerIndex(sourceCol, dataArray)
-
-    ReDim tempArray(0 To UBound(dataArray) - 1 + headers)
-    
-    Dim i As Integer
-    For i = LBound(tempArray) To UBound(tempArray)
-        tempArray(i) = dataArray(i + 1 + Abs(headers), sourceCol)
-    Next i
-        
-    colToList = tempArray
-
-End Function
-
-
-'************************************************
-'@rowToList
-'************************************************
-Function rowToList(dataArray, _
-                   sourceRow, _
-                   Optional dropFirstElem = False)
-
-    ReDim tempArray(0 To UBound(dataArray, 2) - 1 + dropFirstElem)
-    
-    Dim i As Integer
-    For i = LBound(tempArray) To UBound(tempArray)
-        tempArray(i) = dataArray(sourceRow, i + 1 + Abs(dropFirstElem))
-    Next i
-        
-    rowToList = tempArray
-
 End Function
 
 
@@ -283,6 +223,73 @@ Function uniqueArray(ByVal dataArray, _
     
     uniqueArray = tempArray
     
+End Function
+
+
+
+
+'==================================================================================================
+'//BUILD LIST
+'==================================================================================================
+
+
+'************************************************
+'@arrangeList
+'************************************************
+Function arrangeList(startNumber, _
+                     numberCount, _
+                     Optional step = 1, _
+                     Optional ascending As Boolean = True)
+    
+    ReDim tempArray(0 To numberCount - 1)
+
+    Dim i As Long
+    For i = LBound(tempArray) To UBound(tempArray)
+        tempArray(i) = startNumber + (i * step)
+    Next i
+    
+    arrangeList = tempArray
+
+End Function
+
+
+'************************************************
+'@colToList
+'************************************************
+Function colToList(dataArray, _
+                   sourceCol, _
+                   Optional headers = True)
+
+    sourceCol = headerIndex(sourceCol, dataArray)
+
+    ReDim tempArray(0 To UBound(dataArray) - 1 + headers)
+    
+    Dim i As Integer
+    For i = LBound(tempArray) To UBound(tempArray)
+        tempArray(i) = dataArray(i + 1 + Abs(headers), sourceCol)
+    Next i
+        
+    colToList = tempArray
+
+End Function
+
+
+'************************************************
+'@rowToList
+'************************************************
+Function rowToList(dataArray, _
+                   sourceRow, _
+                   Optional dropFirstElem = False)
+
+    ReDim tempArray(0 To UBound(dataArray, 2) - 1 + dropFirstElem)
+    
+    Dim i As Integer
+    For i = LBound(tempArray) To UBound(tempArray)
+        tempArray(i) = dataArray(sourceRow, i + 1 + Abs(dropFirstElem))
+    Next i
+        
+    rowToList = tempArray
+
 End Function
 
 
