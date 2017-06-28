@@ -2030,7 +2030,7 @@ End Function
 Function headerIndex(ByVal headerData, ByVal sourceArray)
 
     If IsArray(headerData) = True Then
-        headerIndex = List(headerData, sourceArray)
+        headerIndex = lists(headerData, sourceArray)
     Else
         headerIndex = scalar(headerData, sourceArray)
     End If
@@ -2041,14 +2041,14 @@ End Function
 '************************************************
 '@list (*Private*)
 '************************************************
-Private Function List(headerList, sourceArray)
+Private Function lists(headerList, sourceArray)
 
     ReDim tempIndexList(0 To UBound(headerList))
     
     Dim i As Integer
     For i = LBound(headerList) To UBound(headerList)
         If IsNumeric(headerList(i)) = False Then
-            tempIndexList(i) = headerIndex(headerList(i), sourceArray)
+            tempIndexList(i) = scalar(headerList(i), sourceArray)
         Else
             tempIndexList(i) = headerList(i)
         End If
@@ -2523,8 +2523,6 @@ Function binarySearch(ByVal itemToMatch, _
 End Function
 
 
-
-
 '==================================================================================================
 '//SORT DATA
 '==================================================================================================
@@ -2850,6 +2848,27 @@ End Function
 
 
 '************************************************
+'@arrayAddIndex
+'************************************************
+'-Add an index to array. Good for when you need to keep the original index.
+'!reshapeArray()
+Function arrayAddIndex(ByVal dataArray, _
+                       Optional indexColName As String = "<INDEX>", _
+                       Optional headers As Boolean = True)
+    
+    dataArray = reshapeArray(dataArray, nrow(dataArray), ncol(dataArray) + 1, Array(indexColName))
+    
+    Dim i As Long
+    For i = LBound(dataArray) + Abs(headers) To UBound(dataArray)
+        dataArray(i, ncol(dataArray)) = i + CLng(headers)
+    Next i
+    
+    arrayAddIndex = dataArray
+
+End Function
+
+
+'************************************************
 '@filterData
 '************************************************
 Function filterData(dataArray, _
@@ -2990,6 +3009,25 @@ End Function
 
 
 '************************************************
+'@listAddIndex
+'************************************************
+Function listAddIndex(ByVal dataList)
+
+    Dim tempArray As Variant
+    tempArray = bindLists(Array(dataList))
+    tempArray = reshapeArray(tempArray, nrow(tempArray), ncol(tempArray) + 1)
+    
+    Dim i As Long
+    For i = LBound(dataList) To UBound(dataList)
+        tempArray(i + 1, 2) = i
+    Next i
+    
+    listAddIndex = tempArray
+
+End Function
+
+
+'************************************************
 '@linearYearFill
 '************************************************
 '-Takes in two column array
@@ -3067,7 +3105,7 @@ End Function
 '-catArray must be 2D and starting index must be 1 (not 0)
 '-Example: An array grouped on months thats missing July or August.
 '!headerIndex(),reshapeArray(),matchGetBool(),filterData()
-Function missingCategories(dataArray, _
+Function missingCategories(ByVal dataArray, _
                            dataCol, _
                            categoryArr, _
                            categoryDataCol, _
@@ -3179,27 +3217,4 @@ End Function
 
 
 
-'==================================================================================================
-'//UTILITY
-'==================================================================================================
 
-
-'************************************************
-'@arrayAddIndex
-'************************************************
-'-Add an index to array. Good for when you need to keep the original index.
-'!reshapeArray()
-Function arrayAddIndex(ByVal dataArray, _
-                       Optional indexColName As String = "<INDEX>", _
-                       Optional headers As Boolean = True)
-    
-    dataArray = reshapeArray(dataArray, nrow(dataArray), ncol(dataArray) + 1, Array(indexColName))
-    
-    Dim i As Long
-    For i = LBound(dataArray) + Abs(headers) To UBound(dataArray)
-        dataArray(i, ncol(dataArray)) = i + CLng(headers)
-    Next i
-    
-    arrayAddIndex = dataArray
-
-End Function
