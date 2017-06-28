@@ -2090,28 +2090,26 @@ End Function
 '-Find header position within given name. If header name is not a string then _
   it returns the headerName give (which is the column position)
 Private Function scalar(headerName, sourceArray)
-
-    Dim returnValue As Variant
     
     If IsNumeric(headerName) = False Then
-        Dim i As Integer
-        For i = LBound(sourceArray, 2) To UBound(sourceArray, 2)
-            If LCase(headerName) = LCase(sourceArray(1, i)) Then
-                returnValue = i
-                Exit For
-            ElseIf i = UBound(sourceArray, 2) Then
-                returnValue = -1
-            End If
-        Next i
+        
+        Dim tempArray As Variant
+        tempArray = rowToCol(sourceArray, 1)
+        tempArray = arrayAddIndex(tempArray, , False)
+        quickSortArray tempArray, 1, LBound(tempArray), UBound(tempArray)
+        
+        Dim currentPosition As Variant
+        currentPosition = actualbinarySearch(headerName, tempArray, 1, False)
+        
+        If currentPosition <> "<!NO POSITION!>" Then
+            scalar = tempArray(currentPosition, 2)
+        Else
+            scalar = currentPosition
+        End If
+        
     Else
-        returnValue = (headerName * 1)
+        scalar = headerName * 1
     End If
-    
-    If returnValue = -1 Then
-        MsgBox "Header <" & headerName & "> not found"
-    End If
-    
-    scalar = returnValue
     
 End Function
 
