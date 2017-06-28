@@ -163,6 +163,24 @@ End Function
 
 
 '************************************************
+'@rowToCol
+'************************************************
+'-Row becomes a column in a new array
+Function rowToCol(dataArray, selectedRow)
+    
+    ReDim tempArray(1 To ncol(dataArray), 1 To 1)
+    
+    Dim i As Long
+    For i = LBound(tempArray) To UBound(tempArray)
+        tempArray(i, 1) = dataArray(selectedRow, i)
+    Next i
+    
+    rowToCol = tempArray
+
+End Function
+
+
+'************************************************
 '@stackList
 '************************************************
 '-List become rows in new array
