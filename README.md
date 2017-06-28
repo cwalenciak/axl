@@ -175,7 +175,6 @@ To have an Excel VBA library that works with data sets you recieve in excel, so 
 * filterData
 * groupData
 * listAddIndex
-* linearYearFill
 * missingCategories
 * reshapeArray
 * transpose
