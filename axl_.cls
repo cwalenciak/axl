@@ -197,7 +197,7 @@ End Function
 Function uniqueArray(ByVal dataArray, _
                      ByVal filterCol, _
                      Optional headers As Boolean = True, _
-                     Optional caseMatters As Boolean = True)
+                     Optional caseMatters As Boolean = False)
 
     filterCol = headerIndex(filterCol, dataArray)
     dataArray = sortArray(dataArray, Array(filterCol), True, headers, caseMatters)
@@ -314,11 +314,12 @@ End Function
 '************************************************
 '@uniqueList
 '************************************************
-'!compareData()
-Function uniqueList(ByVal dataList, Optional caseMatters As Boolean = True)
+'!compareData(), bindList(), colToList()
+Function uniqueList(ByVal dataList, Optional caseMatters As Boolean = False)
                     
     Dim tempArray As Variant
-    tempArray = uniqueArray(bindList(Array(dataList)), 1, False, caseMatters)
+    tempArray = bindLists(Array(dataList))
+    tempArray = uniqueArray(tempArray, 1, False, caseMatters)
     uniqueList = colToList(tempArray, 1, False)
     
 End Function
