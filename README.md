@@ -170,7 +170,7 @@ To have an Excel VBA library that works with data sets you recieve in excel, so 
 * listMean
 * listSD
 
-#### Transform
+### Transform
 * arrayAddIndex
 * filterData
 * groupData
