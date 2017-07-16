@@ -93,7 +93,7 @@ To have an Excel VBA library that works with data sets you recieve in excel, so 
 * errorArray
 * emptyArray
 
-### ExportArrays
+### Export Arrays
 * arrayToWs
 * arrayToWb
 * arraytoCmbx
